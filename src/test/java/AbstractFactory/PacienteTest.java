@@ -21,6 +21,13 @@ class PacienteTest {
     }
 
     @Test
+    void deveEmitirReceitaConvenio() {
+        FabricaAbstrata fabrica = new FabricaConvenio();
+        Paciente paciente = new Paciente(fabrica);
+        assertEquals("Receita de Convênio", paciente.emitirReceita());
+    }
+
+    @Test
     void deveEmitirProntuarioSUS() {
         FabricaAbstrata fabrica = new FabricaSUS();
         Paciente paciente = new Paciente(fabrica);
@@ -32,5 +39,12 @@ class PacienteTest {
         FabricaAbstrata fabrica = new FabricaParticular();
         Paciente paciente = new Paciente(fabrica);
         assertEquals("Prontuário Particular", paciente.emitirProntuario());
+    }
+
+    @Test
+    void deveEmitirProntuarioConvenio() {
+        FabricaAbstrata fabrica = new FabricaConvenio();
+        Paciente paciente = new Paciente(fabrica);
+        assertEquals("Prontuário de Convênio", paciente.emitirProntuario());
     }
 }
